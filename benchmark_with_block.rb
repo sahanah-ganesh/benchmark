@@ -1,11 +1,22 @@
+#benchmark method
 def benchmark
-  # Your benchmarking code goes here.
+  #2 run in segments by....
+  start_time = Time.now
+  #3 yielding control
+  yield
+  end_time = Time.now
+
+  #1 receive code block
+  running_time = end_time - start_time
+  #4 return
+  return running_time
 end
- 
-# Be careful, pasting this into IRB will take a long time to print.
-# It's a loooong string. :)
+
 long_string = "apple"*100000000
- 
-running_time = benchmark { long_string.reverse }
- 
+
+#code block
+running_time = benchmark do
+  long_string.reverse
+end
+
 puts "string.reverse took #{running_time} seconds to run"
